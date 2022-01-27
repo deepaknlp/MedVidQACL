@@ -23,7 +23,7 @@ pip install -r requirements.txt
 If you want to prepare your own video features, change directory to the `MedVidCL` directory and please follow these steps:
 
 ## I3D Extraction
-1) Download the MedVidCL dataset from [OSF repository]() and place train.json/val.json/test.json in the `MedVidCL` directory
+1) Download the MedVidCL dataset from the [OSF repository]() and place train.json/val.json/test.json in the `MedVidCL` directory
 2) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in `data` directory
 3) Set the pythonpath
 ```shell script
