@@ -1,6 +1,6 @@
 # The MedVidCL Dataset
 
-This is a benchmark experiment for our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
+These are benchmark experiments for the MedVidCL dataset in our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
 
 Please install [Anaconda](https://www.anaconda.com/distribution/) to create a conda environment as follow before Data Preparation or Training and Testing:
 ```shell script
@@ -13,7 +13,7 @@ pip install -r requirements.txt
 
 # JSON Files
 
-Each json file contains the following fields:
+Each json file (train.json/val.json/test.json) contains the following fields:
 
 - video_id:
 Unique identifier for each YouTube video
