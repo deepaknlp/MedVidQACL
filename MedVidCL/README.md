@@ -1,6 +1,4 @@
-###########################################################
-The MedVidCL Dataset
-###########################################################
+# The MedVidCL Dataset
 
 This is a benchmark experiment for our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
 
@@ -13,9 +11,8 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-###########################################################
-train.json/val.json/test.json
-###########################################################
+# JSON Files
+
 Each json file contains the following fields:
 
 - video_id:
@@ -40,9 +37,9 @@ Due to copyright issues, we cannot directly share the videos as a part of this d
 
 >>> from pytube import YouTube
 >>> YouTube('https://youtu.be2lAe1cqCOXo').streams.first().download()
-###########################################################
-Data Preparation
-###########################################################
+
+# Data Preparation
+
 1) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/I3D` in `data/features/I3D`
 2) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/ViT` in `data/features/ViT`
 3) To extract the subtitles (i.e., text) of each YouTube video, change directory to the `prepare` directory and run the following command:
@@ -73,9 +70,7 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ``python prepare/Extract_MedVidCL_ViT.py
 ``
 
-###########################################################
-Dataset statistics
-###########################################################
+# Dataset statistics
 Training dataset:
 {'Medical Non-instructional': 2394, 'Non-medical': 1034, 'Medical Instructional': 789}
 
@@ -85,9 +80,8 @@ Validation Dataset:
 Test Dataset:
 {'Medical Instructional': 600, 'Medical Non-instructional': 500, 'Non-medical': 500}
 
-###########################################################
-Training and Testing BaseLine Models
-###########################################################
+# Training and Testing BaseLine Models
+
 1) After Data Preparation, change directory to the `models` directory
 
 ## Text SVM Models
