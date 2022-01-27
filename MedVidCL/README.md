@@ -48,26 +48,29 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 
 1) After Data Preparation, change directory to the `models` directory
 
-## To Train Text SVM Models
+## To Train Monomodal (Language) SVM Models
 2) Run the following command:
 
 ``python BaseLine_SVM_Text_Model_Reports.py
 ``
 
-## To Train Text Transformer Models
+## To Train Monomodal (Language) Transformer Models
 2) Run the following command:
 
 ``python BaseLine_Transformer_Text_Model_Reports.py
 ``
 
-## To Train Video Models
+## To Train Monomodal (Vision) Models
 2) Run the following command:
 
 ``python BaseLine_Video_Model_Reports.py
 ``
 
-## To Train MultiModal Models
+## To Train MultiModal (Language + Vision) Models
 2) Run the following command:
 
 ``python BaseLine_MultiModal_Model_Reports.py
+``
+To get the best result of the Transformer Model on the I3D dataset, run the following command
+``python BaseLine_MultiModal_Model_Reports.py --transformer_learning_rate 1e-5
 ``
