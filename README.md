@@ -1,5 +1,5 @@
 # MedVidQACL
-This repository contains the implementation of benchmarked approaches discussed in our paper
+This repository contains the implementation of benchmark approaches discussed in our paper
 
 [A Dataset for Medical Instructional Video Classification and Question Answering]()
 
