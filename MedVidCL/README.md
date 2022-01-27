@@ -51,7 +51,7 @@ If you want to prepare your own video features, change directory to the `MedVidC
 
 ## I3D Extraction
 1) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in `data` directory
-2) set the pythonpath
+2) Set the pythonpath
 ```shell script
 export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ```
@@ -61,7 +61,7 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ``
 
 ## ViT Extraction
-1) set the pythonpath
+1) Set the pythonpath
 ```shell script
 export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ```
@@ -84,25 +84,25 @@ Test Dataset:
 
 1) After Data Preparation, change directory to the `models` directory
 
-## Text SVM Models
+## To Train Text SVM Models
 2) Run the following command:
 
 ``python BaseLine_SVM_Text_Model_Reports.py
 ``
 
-## Text Transformer Models
+## To Train Text Transformer Models
 2) Run the following command:
 
 ``python BaseLine_Transformer_Text_Model_Reports.py
 ``
 
-## Video Models
+## To Train Video Models
 2) Run the following command:
 
 ``python BaseLine_Video_Model_Reports.py
 ``
 
-## MultiModal Models
+## To Train MultiModal Models
 2) Run the following command:
 
 ``python BaseLine_MultiModal_Model_Reports.py
