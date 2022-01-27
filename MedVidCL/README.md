@@ -11,33 +11,6 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-# JSON Files
-
-Each json file (train.json/val.json/test.json) contains the following fields:
-
-- video_id:
-Unique identifier for each YouTube video
-- video_link:
-Link to download YouTube video
-- video_title:
-Title of the video
-- label:
-Category of the video
-
-
-
-This can be loaded into python as:
-
->>> import json
->>> with open('train.json', 'r') as rfile:
->>>     data_items = json.load(rfile)
-
-
-Due to copyright issues, we cannot directly share the videos as a part of this dataset. The videos can be downloaded using pytube library (https://github.com/pytube/pytube):
-
->>> from pytube import YouTube
->>> YouTube('https://youtu.be2lAe1cqCOXo').streams.first().download()
-
 # Data Preparation
 
 1) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/I3D` in `data/features/I3D`
@@ -50,12 +23,13 @@ Due to copyright issues, we cannot directly share the videos as a part of this d
 If you want to prepare your own video features, change directory to the `MedVidCL` directory and please follow these steps:
 
 ## I3D Extraction
-1) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in `data` directory
-2) Set the pythonpath
+1) Download the MedVidCL dataset from [OSF repository]() and place train.json/val.json/test.json in the `MedVidCL` directory
+2) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in `data` directory
+3) Set the pythonpath
 ```shell script
 export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ```
-3) Run the following command
+4) Run the following command
 
 ``python prepare/Extract_MedVidCL_I3D.py --dataset_dir path/to/data/with/video/ids --video_dir path/to/store/videos --images_dir path/to/store/images --save_dir path/to/store/extracted/features
 ``
@@ -69,16 +43,6 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 
 ``python prepare/Extract_MedVidCL_ViT.py --dataset_dir path/to/data/with/video/ids --video_dir path/to/store/videos --images_dir path/to/store/images --save_dir path/to/store/extracted/features
 ``
-
-# Dataset statistics
-Training dataset:
-{'Medical Non-instructional': 2394, 'Non-medical': 1034, 'Medical Instructional': 789}
-
-Validation Dataset:
-{'Medical Non-instructional': 100, 'Non-medical': 100, 'Medical Instructional': 100}
-
-Test Dataset:
-{'Medical Instructional': 600, 'Medical Non-instructional': 500, 'Non-medical': 500}
 
 # Training and Testing BaseLine Models
 
