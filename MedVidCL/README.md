@@ -1,6 +1,6 @@
 # The MedVidCL Dataset
 
-These are benchmark experiments for the MedVidCL dataset in our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
+These are the benchmark experiments for the MedVidCL dataset in our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
 
 Please install [Anaconda](https://www.anaconda.com/distribution/) to create a conda environment as follow before Data Preparation or Training and Testing:
 ```shell script
