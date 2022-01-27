@@ -57,7 +57,7 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ```
 3) Run the following command
 
-``python prepare/Extract_MedVidCL_I3D.py
+``python prepare/Extract_MedVidCL_I3D.py --dataset_dir path/to/data/with/video/ids --video_dir path/to/store/videos --images_dir path/to/store/images --save_dir path/to/store/extracted/features
 ``
 
 ## ViT Extraction
@@ -67,7 +67,7 @@ export PYTHONPATH=$PYTHONPATH/path/to/the/medvidcl/directory
 ```
 2) Run the following command
 
-``python prepare/Extract_MedVidCL_ViT.py
+``python prepare/Extract_MedVidCL_ViT.py --dataset_dir path/to/data/with/video/ids --video_dir path/to/store/videos --images_dir path/to/store/images --save_dir path/to/store/extracted/features
 ``
 
 # Dataset statistics
