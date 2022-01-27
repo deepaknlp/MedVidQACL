@@ -12,10 +12,10 @@ pip install -r requirements.txt
 ```
 
 # Data Preparation
-
-1) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/I3D` in `data/features/I3D`
-2) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/ViT` in `data/features/ViT`
-3) To extract the subtitles (i.e., text) of each YouTube video, change directory to the `prepare` directory and run the following command:
+1) Download the MedVidCL dataset from [OSF repository]() and place train.json/val.json/test.json in the `MedVidCL` directory
+2) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/I3D` in `data/features/I3D`
+3) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the contents of `MedVidCL/ViT` in `data/features/ViT`
+4) To extract the subtitles (i.e., text) of each YouTube video, change directory to the `prepare` directory and run the following command:
 
 ``python Text_Extraction.py --target_dir ../data/text
 ``
