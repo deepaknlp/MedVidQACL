@@ -11,7 +11,7 @@ conda activate medvidqa
 ```
 
 ## Data Preparation
-1) Download the MedVidQA dataset from [OSF repository]() and place train.json/val.json/test.json in `data/dataset/medvidqa` directory
+1) Download the MedVidQA dataset from [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in `data/dataset/medvidqa` directory
 2) Download the video features from [here](https://bionlp.nlm.nih.gov/), unzip the file and place the content of `MedVidQA/I3D` in `data/features/medvidqa`
 3) Download the word embeddings from [here](http://nlp.stanford.edu/data/glove.840B.300d.zip) and place it to `data/word_embedding`
 
