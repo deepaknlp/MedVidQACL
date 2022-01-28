@@ -99,7 +99,7 @@ def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, t
         clf.fit(X_train_train, y_train_train)
 
         y_pred = clf.predict(X_test_1)
-        print("Classification Report with tuned LinearSVC on Test Set 1:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
+        print("Classification Report with tuned LinearSVC on Test Set:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
 
     # Hyperparameter Tuning for SVM
     else:
@@ -138,7 +138,7 @@ def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, t
         svm_v2.fit(X_train_train, y_train_train)
 
         y_pred = svm_v2.predict(X_test_1)
-        print("Classification Report with tuned SVM on Test Set 1:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
+        print("Classification Report with tuned SVM on Test Set:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
 
 # # Import Datasets 
 

@@ -264,7 +264,7 @@ def train_and_test_lstm(dataset, filepath, max_seq_length, num_features, batch_s
     # Loading the best model
     model.load_state_dict(torch.load(filepath))
 
-    # Test on Test Set 1
+    # Test
     test1_targets = []
     test1_preds = []
     
@@ -285,7 +285,7 @@ def train_and_test_lstm(dataset, filepath, max_seq_length, num_features, batch_s
                           y_pred = test1_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Set 1 Classification Report:\n", test1_report)
+    print("Test Classification Report:\n", test1_report)
 
 # Method to train Transformer Model 
 
@@ -342,7 +342,7 @@ def train_and_test_transformer(datasets, labels, filepath, max_seq_length, num_f
                           y_pred = test1_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Set 1 Classification Report:\n", test1_report)
+    print("Test Classification Report:\n", test1_report)
 
     return model
 

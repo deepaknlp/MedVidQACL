@@ -159,7 +159,7 @@ def train_and_test_Transformer_Model(model_name = "google/bigbird-roberta-base",
         print(report1)
         return report1
     
-    report_v1 = get_classification_report(trainer, ddatasets['test.json'])
+    report = get_classification_report(trainer, ddatasets['test.json'])
     
     # Save Model & Tokenizer
     trainer.save_model('models/best_run_' + specific_model)
