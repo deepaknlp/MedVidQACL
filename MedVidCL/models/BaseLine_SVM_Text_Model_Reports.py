@@ -36,21 +36,21 @@ def label_vid(row):
 
 # ## Method to Create and Hyperparameter-Tune an SVM Model 
 
-def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, test1_dataset_length, hyperparam_svm = False):
+def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, test_dataset_length, hyperparam_svm = False):
     # Create features to train SVM based on dataset's video sub_titles
     tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='latin-1', ngram_range=(1, 2), stop_words='english')
 
     features = tfidf.fit_transform(full_dataset['text']).toarray()
     labels = full_dataset.labels
 
-    # Create train+val and test1 sets
+    # Create train+val and test sets
     X_train = features[:(train_dataset_length+val_dataset_length)]
-    X_test_1 = features[(train_dataset_length+val_dataset_length):]
+    X_test = features[(train_dataset_length+val_dataset_length):]
     y_train = labels[:(train_dataset_length+val_dataset_length)]
-    y_test_1 = labels[(train_dataset_length+val_dataset_length):]
+    y_test = labels[(train_dataset_length+val_dataset_length):]
     
     print("Length of training+val dataset: ", len(X_train))
-    print("Length of test dataset: ", len(X_test_1))
+    print("Length of test dataset: ", len(X_test))
     
     # Create train and val sets
     X_train_train = X_train[:train_dataset_length]
@@ -98,8 +98,8 @@ def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, t
         clf = CalibratedClassifierCV(base_estimator=svm_v2, cv='prefit') 
         clf.fit(X_train_train, y_train_train)
 
-        y_pred = clf.predict(X_test_1)
-        print("Classification Report with tuned LinearSVC on Test Set:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
+        y_pred = clf.predict(X_test)
+        print("Classification Report with tuned LinearSVC on Test Set:\n", classification_report(y_test, y_pred, target_names=['0', '1', '2'], digits=4))
 
     # Hyperparameter Tuning for SVM
     else:
@@ -137,34 +137,34 @@ def train_and_tune_SVM(full_dataset, train_dataset_length, val_dataset_length, t
         svm_v2 = SVC(tol = best_tolerance_value, C = best_regularization_value, kernel = best_kernel_value, random_state=42)
         svm_v2.fit(X_train_train, y_train_train)
 
-        y_pred = svm_v2.predict(X_test_1)
-        print("Classification Report with tuned SVM on Test Set:\n", classification_report(y_test_1, y_pred, target_names=['0', '1', '2'], digits=4))
+        y_pred = svm_v2.predict(X_test)
+        print("Classification Report with tuned SVM on Test Set:\n", classification_report(y_test, y_pred, target_names=['0', '1', '2'], digits=4))
 
 # # Import Datasets 
 
 # Import all new datasets
 new_train_df = pd.read_json(args.source_dir + "train.json")
 new_eval_df = pd.read_json(args.source_dir + "val.json")
-new_test1_df = pd.read_json(args.source_dir + "test.json")
+new_test_df = pd.read_json(args.source_dir + "test.json")
 
 # Rename column names in new datasets to match old datasets
 new_train_df=new_train_df.rename(columns = {'video_sub_title':'text', 'video_title':'title', 'label':'labels', 'video_id':'YouTube_ID'})
 new_eval_df=new_eval_df.rename(columns = {'video_sub_title':'text', 'video_title':'title', 'label':'labels', 'video_id':'YouTube_ID'})
-new_test1_df=new_test1_df.rename(columns = {'video_sub_title':'text', 'video_title':'title', 'label':'labels', 'video_id':'YouTube_ID'})
+new_test_df=new_test_df.rename(columns = {'video_sub_title':'text', 'video_title':'title', 'label':'labels', 'video_id':'YouTube_ID'})
 
 # Change labels of new datasets to match the old one
 new_train_df['labels'] = new_train_df['labels'].apply(label_vid)
 new_eval_df['labels'] = new_eval_df['labels'].apply(label_vid)
-new_test1_df['labels'] = new_test1_df['labels'].apply(label_vid)
+new_test_df['labels'] = new_test_df['labels'].apply(label_vid)
 
 
 # Create new full dataframes for testing all possible models
-df = pd.concat([new_train_df, new_eval_df, new_test1_df], ignore_index=True)
+df = pd.concat([new_train_df, new_eval_df, new_test_df], ignore_index=True)
 
 
 # ## Try Hyperparameter Tuning to Improve LinearSVC and SVM
-train_and_tune_SVM(df, len(new_train_df), len(new_eval_df), len(new_test1_df))
+train_and_tune_SVM(df, len(new_train_df), len(new_eval_df), len(new_test_df))
 
-train_and_tune_SVM(df, len(new_train_df), len(new_eval_df), len(new_test1_df), hyperparam_svm = True)
+train_and_tune_SVM(df, len(new_train_df), len(new_eval_df), len(new_test_df), hyperparam_svm = True)
 
 

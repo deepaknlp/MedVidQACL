@@ -265,27 +265,27 @@ def train_and_test_lstm(dataset, filepath, max_seq_length, num_features, batch_s
     model.load_state_dict(torch.load(filepath))
 
     # Test
-    test1_targets = []
-    test1_preds = []
+    test_targets = []
+    test_preds = []
     
     model.eval()
     for inputs, labels in dataset['test.json']:
         if batch_size == 1:
-            test1_targets.append(int(labels))
+            test_targets.append(int(labels))
         else:
-            test1_targets.extend(labels.tolist())
+            test_targets.extend(labels.tolist())
         inputs, labels = inputs.to(device), labels.to(device)
         output, h = model(inputs, h_init)
         if batch_size == 1:
-            test1_preds.append(int(output.argmax(axis=-1)))
+            test_preds.append(int(output.argmax(axis=-1)))
         else:
-            test1_preds.extend(output.argmax(axis=-1).tolist())
+            test_preds.extend(output.argmax(axis=-1).tolist())
 
-    test1_report = classification_report(y_true = test1_targets,
-                          y_pred = test1_preds,
+    test_report = classification_report(y_true = test_targets,
+                          y_pred = test_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Classification Report:\n", test1_report)
+    print("Test Classification Report:\n", test_report)
 
 # Method to train Transformer Model 
 
@@ -337,12 +337,12 @@ def train_and_test_transformer(datasets, labels, filepath, max_seq_length, num_f
     # Load in model
     model.load_weights(filepath)
     # Test on Set 1
-    test1_preds = model.predict(datasets['test.json']).argmax(axis=-1)
-    test1_report = classification_report(y_true = labels['test.json'],
-                          y_pred = test1_preds,
+    test_preds = model.predict(datasets['test.json']).argmax(axis=-1)
+    test_report = classification_report(y_true = labels['test.json'],
+                          y_pred = test_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Classification Report:\n", test1_report)
+    print("Test Classification Report:\n", test_report)
 
     return model
 
