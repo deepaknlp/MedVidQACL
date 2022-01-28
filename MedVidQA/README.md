@@ -19,7 +19,7 @@ If you want to prepare your own video features, please follow these steps:
 1) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in `data` directory
 2) set the pythonpath
 ```shell script
-export PYTHONPATH=$PYTHONPATH/path/to/the/medvidqa/directory
+export PYTHONPATH=$PYTHONPATH/path/to/the/MedVidQA/directory
 ```
 3) Run the following command
 
