@@ -150,14 +150,14 @@ def train_and_test_Transformer_Model(model_name = "google/bigbird-roberta-base",
     
     # Get Classification Reports
     def get_classification_report(trainer, test_dataset):
-        preds1, label_ids1, *_ = trainer.predict(test_dataset)
-        preds1 = preds1.argmax(axis=-1)
-        report1 = classification_report(y_true = test_dataset['labels'],
-                                        y_pred = list(map(int, preds1)),
+        preds, label_ids, *_ = trainer.predict(test_dataset)
+        preds = preds.argmax(axis=-1)
+        report = classification_report(y_true = test_dataset['labels'],
+                                        y_pred = list(map(int, preds)),
                                         labels = list(set(test_dataset['labels'])),
                                         digits = 4)
-        print(report1)
-        return report1
+        print(report)
+        return report
     
     report = get_classification_report(trainer, ddatasets['test.json'])
     

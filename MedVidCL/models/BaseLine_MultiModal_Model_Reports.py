@@ -427,31 +427,31 @@ def train_and_test_lstm(dataset, text_dataset, vocab, filepath, max_seq_length, 
     # Loading the best model
     model.load_state_dict(torch.load(filepath))
 
-    # Test on Test Set 1
-    test1_targets = []
-    test1_preds = []
+    # Test on Test Set
+    test_targets = []
+    test_preds = []
     
     model.eval()
     for (inputs, labels), ex in zip(dataset['test.json'], text_dataset['test']):
         if batch_size == 1:
-            test1_targets.append(int(labels))
+            test_targets.append(int(labels))
         else:
-            test1_targets.extend(labels.tolist())
+            test_targets.extend(labels.tolist())
         text_labels = ex.labels
         text = ex.text[0]
         text_len = ex.text[1]
         inputs, labels, text_labels, text, text_len = inputs.to(device), labels.to(device), text_labels.to(device), text.to(device), text_len.to(device)
         output, h = model(inputs, h_init, text, text_len)
         if batch_size == 1:
-            test1_preds.append(int(output.argmax(axis=-1)))
+            test_preds.append(int(output.argmax(axis=-1)))
         else:
-            test1_preds.extend(output.argmax(axis=-1).tolist())
+            test_preds.extend(output.argmax(axis=-1).tolist())
 
-    test1_report = classification_report(y_true = test1_targets,
-                          y_pred = test1_preds,
+    test_report = classification_report(y_true = test_targets,
+                          y_pred = test_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Set 1 Classification Report:\n", test1_report)
+    print("Test Set Classification Report:\n", test_report)
 
 
 # Method to train Transformer Model 
@@ -524,13 +524,13 @@ def train_and_test_transformer(datasets, labels, filepath, max_seq_length, num_f
     
     # Load in model
     model.load_weights(filepath)
-    # Test on Set 1
-    test1_preds = model.predict([datasets['test.json'], test_texts_to_int_pad]).argmax(axis=-1)
-    test1_report = classification_report(y_true = labels['test.json'],
-                          y_pred = test1_preds,
+    # Test on Set
+    test_preds = model.predict([datasets['test.json'], test_texts_to_int_pad]).argmax(axis=-1)
+    test_report = classification_report(y_true = labels['test.json'],
+                          y_pred = test_preds,
                           labels = [0, 1, 2],
                           digits = 4)
-    print("Test Set 1 Classification Report:\n", test1_report)
+    print("Test Set Classification Report:\n", test_report)
 
     return model
 
