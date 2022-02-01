@@ -1,6 +1,6 @@
 # A Dataset for Medical Instructional Video Classification and Question Answering
 
-These are the benchmark experiments reported for MedVidQA dataset in our paper "A Dataset for Medical Instructional Video Classification and Question Answering" 
+These are the benchmark experiments reported for MedVidQA dataset in our paper [A Dataset for Medical Instructional Video Classification and Question Answering](https://arxiv.org/pdf/2201.12888.pdf)
 
 
 Please install [Anaconda](https://www.anaconda.com/distribution/) to create a conda environment as follow:
