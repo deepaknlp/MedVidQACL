@@ -24,9 +24,10 @@ python Text_Extraction.py --target_dir ../data/text
 If you want to prepare your own video features, please follow these steps:
 1) Download the MedVidCL dataset from the [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory
 2) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in the `data` directory
-3) Set the PYTHONPATH
+3) Set the PYTHONPATH and download additional library of 'ffmpeg' into medvidcl conda environment
 ```shell script
 export PYTHONPATH=$PYTHONPATH/path/to/the/MedVidCL/directory
+conda install -c conda-forge ffmpeg
 ```
 4) Run the following command from the MedVidCL directory
 #### I3D Extraction
