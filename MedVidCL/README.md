@@ -12,15 +12,18 @@ pip install -r requirements.txt
 ```
 
 ## Data Preparation
-1) Download the MedVidCL dataset from [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory
+1) Download the MedVidCL dataset from [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory and place the `Med-Instr-Hierarchical` folder in the `MedVidCL` directory
 2) Download the video features from [here](https://bionlp.nlm.nih.gov/VideoFeatures.zip), unzip the file, and place the contents of `MedVidCL/I3D` in `data/features/I3D` and the contents of `MedVidCL/ViT` in `data/features/ViT`
 3) To extract the subtitles (i.e., text) of each YouTube video run the following command:
-
 ```
 cd prepare
 python Text_Extraction.py --target_dir ../data/text
 ```
-
+4) For extracting the subtitles for the videos in the `MedInstr` folder, run:
+```
+cd prepare
+python Text_Extraction.py --source_dir ../Med-Instr-Hierarchical/ --target_dir ../data/text/Med-Instr-Hierarchical
+```
 If you want to prepare your own video features, please follow these steps:
 1) Download the MedVidCL dataset from the [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory
 2) Download the pre-trained RGB model from [here](https://github.com/piergiaj/pytorch-i3d/blob/master/models/rgb_imagenet.pt) and place it in the `data` directory
@@ -76,4 +79,14 @@ python BaseLine_MultiModal_Model_Reports.py
 To get the best result of the Transformer Model on the I3D dataset, run the following command
 ```
 python BaseLine_MultiModal_Model_Reports.py --transformer_learning_rate 1e-5
+```
+
+## To Train Top Models of Each Modality (Language, Video, Language + Vision) on MultiLabel Classification of the Medical-Instructional (MedInstr) Videos
+Run the following command:
+
+```
+cd models
+python MultiLabel_Text_Model.py
+python MultiLabel_Video_Model.py
+python MultiLabel_MultiModal_Model.py
 ```
