@@ -31,7 +31,7 @@ from datasets import load_metric, Dataset
 # # Set Env Variables
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--source_dir", type=str, default="../data/text/MedInstr/", help="Directory where source JSON files with text are located")
+parser.add_argument("--source_dir", type=str, default="../data/text/Med-Instr-Hierarchical/", help="Directory where source JSON files with text are located")
 parser.add_argument("--early_stopping_patience", type=int, default=3, help="Number of epochs to wait before terminating training if no improvement")
 parser.add_argument("--evaluation_metric", type=str, default="eval_Fweighted", help="Metric to use to track and choose best model")
 parser.add_argument("--seed", type=int, default=42, help="Seed to use to initialize random numbers")

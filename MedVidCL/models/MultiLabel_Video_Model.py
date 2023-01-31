@@ -34,7 +34,7 @@ import tensorflow_addons as tfa
 # # Set Env Variables
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--source_dir", type=str, default="../data/text/MedInstr/", help="Directory where source JSON files with text are located")
+parser.add_argument("--source_dir", type=str, default="../data/text/Med-Instr-Hierarchical/", help="Directory where source JSON files with text are located")
 parser.add_argument("--i3d_feature_dir", type=str, default="../features/I3D/", help="Directory where I3D-extracted video features are located")
 parser.add_argument("--vit_feature_dir", type=str, default="../features/ViT/", help="Directory where ViT-extracted video features are located")
 parser.add_argument("--seed", type=int, default=42, help="Seed to use to initialize random numbers")

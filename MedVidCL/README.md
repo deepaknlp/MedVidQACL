@@ -12,7 +12,7 @@ pip install -r requirements.txt
 ```
 
 ## Data Preparation
-1) Download the MedVidCL dataset from [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory and place the `MedInstr` folder in the `MedVidCL` directory
+1) Download the MedVidCL dataset from [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory and place the `Med-Instr-Hierarchical` folder in the `MedVidCL` directory
 2) Download the video features from [here](https://bionlp.nlm.nih.gov/VideoFeatures.zip), unzip the file, and place the contents of `MedVidCL/I3D` in `data/features/I3D` and the contents of `MedVidCL/ViT` in `data/features/ViT`
 3) To extract the subtitles (i.e., text) of each YouTube video run the following command:
 ```
@@ -22,7 +22,7 @@ python Text_Extraction.py --target_dir ../data/text
 4) For extracting the subtitles for the videos in the `MedInstr` folder, run:
 ```
 cd prepare
-python Text_Extraction.py --source_dir ../MedInstr/ --target_dir ../data/text/MedInstr
+python Text_Extraction.py --source_dir ../Med-Instr-Hierarchical/ --target_dir ../data/text/Med-Instr-Hierarchical
 ```
 If you want to prepare your own video features, please follow these steps:
 1) Download the MedVidCL dataset from the [OSF repository](https://doi.org/10.17605/OSF.IO/PC594) and place train.json/val.json/test.json in the `MedVidCL` directory
